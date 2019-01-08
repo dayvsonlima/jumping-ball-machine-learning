@@ -1,0 +1,48 @@
+
+#canva {
+  width: 800px;
+  height: 400px;
+  background: #f5f5f5;
+  position: relative;
+  overflow: hidden;
+}
+
+#ball {
+  background: #f00;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+
+}
+
+#train {
+  height: 50px;
+  width: 150px;
+  background: #00f;
+  animation: ignition 2.5s infinite linear;
+}
+
+#train, #ball {
+  position: absolute;
+  bottom: 0;
+}
+
+.jump {
+  animation: jump .9s infinite;
+}
+
+@keyframes ignition {
+  from { right: -150px; }
+
+  to { right: 800px; }
+}
+
+
+@keyframes jump {
+  0% { bottom: 0;  }
+
+  50% { bottom: 200px; }
+
+  100% {  bottom: 0; }
+}

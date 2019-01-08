@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Genious Ball</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <div id="canva">
+    <div id="ball"></div>
+
+    <div id="train"></div>
+  </div>
+
+  <a href="#" id="jump">Pula</a>
+
+
+  <script>
+    var jumpLink = document.querySelector('#jump'),
+        ball = document.querySelector('#ball');
+        inJump = false;
+
+    function jump() {
+      if (inJump) {
+        return false;
+      }
+
+      ball.classList.add('jump');
+      inJump = true;
+
+      setTimeout(function() {
+        ball.classList.remove('jump');
+
+        inJump = false;
+      }, 900);
+    }
+
+    jumpLink.addEventListener('click', jump);
+  </script>
+</body>
+</html>
