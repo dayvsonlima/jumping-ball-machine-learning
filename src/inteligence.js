@@ -32,5 +32,15 @@ const gamer = setInterval(function() {
     console.log(currentDna[fitStep], 'jump');
     console.log(currentDna);
   }
+
+  if (!window.start) {
+    if (dnaIndex<9) {
+      dnaIndex+= 1;
+      start();
+    }else {
+      console.log('new regeration');
+    }
+  }
+
 }, 100);
 

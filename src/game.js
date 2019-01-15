@@ -53,7 +53,9 @@ const gameLoop = function() {
   }
 };
 
-const afterGameOver = function() {};
+const afterGameOver = function() {
+  window.start = false;
+};
 
 const gameOver = function() {
   clearInterval(gameInterval);
@@ -66,6 +68,7 @@ const gameOver = function() {
 const start = function() {
   gameInterval = setInterval(gameLoop, 100);
   canva.classList.add('start');
+  window.start = true;
 };
 
 startButton.addEventListener('click', function() {
