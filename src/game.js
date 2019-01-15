@@ -5,6 +5,7 @@ const jumpLink = document.querySelector('#jump'),
       startButton = document.querySelector('#start');
 
 let inJump = false;
+let gameInterval = null;
 
 function jump() {
   if (inJump) {
@@ -22,11 +23,8 @@ function jump() {
 }
 
 jumpLink.addEventListener('click', jump);
-startButton.addEventListener('click', function() {
-  canva.classList.add('start');
-});
 
-const parseParams = function(element) {
+const getHitbox = function(element) {
   const styles = window.getComputedStyle(element);
 
   return {
@@ -45,12 +43,31 @@ const detectColision = function(elementA, elementB) {
 }
 
 const gameLoop = function() {
-  let ballOutput = parseParams(ball);
-  let trainOutput = parseParams(train);
+  let ballOutput = getHitbox(ball);
+  let trainOutput = getHitbox(train);
+
+  window.trainOutput = trainOutput;
 
   if (detectColision(ballOutput, trainOutput)) {
-    canva.classList.remove('start');
+    gameOver();
   }
 };
 
-setInterval(gameLoop, 100);
+const afterGameOver = function() {};
+
+const gameOver = function() {
+  clearInterval(gameInterval);
+  canva.classList.remove('start');
+  ball.classList.remove('jump');
+
+  afterGameOver();
+};
+
+const start = function() {
+  gameInterval = setInterval(gameLoop, 100);
+  canva.classList.add('start');
+};
+
+startButton.addEventListener('click', function() {
+  start();
+});

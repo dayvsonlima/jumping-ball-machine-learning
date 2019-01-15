@@ -37,9 +37,9 @@
 }
 
 @keyframes ignition {
-  from { right: -150px; }
+  from { left: 800px; }
 
-  to { right: 800px; }
+  to { left: -150px; }
 }
 
 @keyframes jump {
